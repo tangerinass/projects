@@ -18,6 +18,8 @@
 #define NORMALIZE_FREQ 80
 #define MAX_ROWS 56
 
+#define RED_COLOR "\033[91m"
+
 // define a instnsidade / desidade do char
 const char* CHAR_DENISTY = "$@B%%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,^`'.";
 
@@ -109,7 +111,7 @@ int main(int argc, char* argv[]){
     }
 
     phase = 0;
-
+    
     while (phase < MAX_PHASE){
         phase += 1;
 
@@ -124,8 +126,8 @@ int main(int argc, char* argv[]){
         generate_sine_wave(chord_arr[ptr] ,phase, terminal_size, console_buffer);
 
         // despejar o buffer no terminal
-        for (i = 0; i < terminal_size.ws_row;i++){
-            printf("%s\n",console_buffer[i]);
+        for (i = 0, j = 0; i < terminal_size.ws_row; i++, j++, j = j%7){
+            printf("\033[9%dm%s\033[0m\n",j,console_buffer[i]);
         }
         // esperar para parecer mais "limpo" 
         usleep(WAIT_TIME);  
