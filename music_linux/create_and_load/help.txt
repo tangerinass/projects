@@ -1,0 +1,3 @@
+gcc visualizer_loaded.c common/music.c common/parse.c -o visualizer_loaded -lm
+
+gcc main.c common/music.c common/parse.c -o main -lm
