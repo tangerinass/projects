@@ -1,1 +1,0 @@
-// basicamente copiar o video do code bullet
